@@ -50,7 +50,7 @@
         "tags": [
           "Category"
         ],
-        "sumarry": "List all categories",
+        "summary": "List all categories",
         "description": "List all categories",
         "responses": {
           "200": {
