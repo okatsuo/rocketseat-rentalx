@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/server.ts",
-    "ec": "docker exec -it rentalx //bin//bash"
+    "ec": "docker exec -it rentalx //bin//bash",
+    "typeorm": "tsnd ./node_modules/typeorm/cli"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
