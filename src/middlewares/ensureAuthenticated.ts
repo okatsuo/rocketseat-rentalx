@@ -1,11 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
+import { AppError } from "../errors/AppError";
 import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
 
 type IPayload = {
   sub: string;
 };
+
+const jwtSecret = "294f5e38662ee52b2e30d4272d9876d7";
 
 export const ensureAuthenticated = async (
   request: Request,
@@ -13,22 +16,18 @@ export const ensureAuthenticated = async (
   next: NextFunction
 ) => {
   const { authorization } = request.headers;
-  if (!authorization) throw new Error("Missing token");
+  if (!authorization) throw new AppError("Missing token", 401);
   const { 1: token } = authorization.split(" ");
-  console.log(`token: ${token}`);
   try {
-    const { sub: userId } = verify(
-      token,
-      "294f5e38662ee52b2e30d4272d9876d7"
-    ) as IPayload;
+    const { sub: userId } = verify(token, jwtSecret) as IPayload;
 
     const usersRepository = new UsersRepository();
     const user = await usersRepository.findById(userId);
 
-    if (!user) throw new Error("User does not exists");
+    if (!user) throw new AppError("User does not exists", 401);
 
     return next();
   } catch (error) {
-    throw new Error("Invalid token");
+    throw new AppError("Invalid token", 401);
   }
 };
