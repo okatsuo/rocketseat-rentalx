@@ -19,12 +19,15 @@ export const ensureAuthenticated = async (
   if (!authorization) throw new AppError("Missing token", 401);
   const { 1: token } = authorization.split(" ");
   try {
-    const { sub: userId } = verify(token, jwtSecret) as IPayload;
-
+    const { sub: user_id } = verify(token, jwtSecret) as IPayload;
     const usersRepository = new UsersRepository();
-    const user = await usersRepository.findById(userId);
+    const user = await usersRepository.findById(user_id);
 
     if (!user) throw new AppError("User does not exists", 401);
+
+    request.user = {
+      id: user_id,
+    };
 
     return next();
   } catch (error) {
