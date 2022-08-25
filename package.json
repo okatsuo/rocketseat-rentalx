@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/server.ts",
     "ec": "docker exec -it rentalx //bin//bash",
-    "typeorm": "tsnd ./node_modules/typeorm/cli"
+    "typeorm": "tsnd ./node_modules/typeorm/cli",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.8",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/multer": "^1.4.7",
     "@types/node": "^17.0.33",
@@ -25,6 +27,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^29.0.0",
     "prettier": "^2.6.2",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
