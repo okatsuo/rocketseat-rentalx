@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/server.ts",
+    "dev": "tsnd -r tsconfig-paths/register  --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/server.ts",
     "ec": "docker exec -it rentalx //bin//bash",
-    "typeorm": "tsnd ./node_modules/typeorm/cli",
+    "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "test": "jest"
   },
   "devDependencies": {
@@ -31,6 +31,7 @@
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.8",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.6.4"
   },
   "dependencies": {
