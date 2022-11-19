@@ -1,3 +1,5 @@
+import { Specification } from "../infra/typeorm/entities/Specification";
+
 export type ICreateCarDTO = {
   name: string;
   description: string;
@@ -6,4 +8,6 @@ export type ICreateCarDTO = {
   fine_amount: number;
   brand: string;
   category_id: string;
+  specifications?: Specification[];
+  id?: string;
 };
