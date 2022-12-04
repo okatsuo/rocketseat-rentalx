@@ -1,5 +1,5 @@
 import { ICreateRentalDTO } from "../dtos/ICreateRentalDTO";
-import { Rental } from "../infra/typeorm/entities/repositories/Rentals";
+import { Rental } from "../infra/typeorm/entities/Rentals";
 
 export type IRentalsRepository = {
   findOpenRentalByCar(car_id: string): Promise<Rental>;
