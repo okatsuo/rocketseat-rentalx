@@ -7,7 +7,7 @@
     "dev": "tsnd -r tsconfig-paths/register  --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/shared/infra/http/server.ts",
     "ec": "docker exec -it rentalx //bin//bash",
     "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "test": "set NODE_ENV=test&&jest",
+    "test": "set NODE_ENV=test&&jest --runInBand",
     "seed:admin": "tsnd src/shared/infra/typeorm/seed/admin.ts",
     "run:migrate": "yarn typeorm migration:run"
   },

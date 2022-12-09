@@ -25,7 +25,9 @@ describe("Create Car Specification", () => {
       specifications_id,
     });
 
-    await expect(response).rejects.toBeInstanceOf(AppError);
+    await expect(response).rejects.toEqual(
+      new AppError("Car does not exists!")
+    );
   });
   it("should be able to add a new car specification", async () => {
     const car = await carsRepositoryInMemory.create({

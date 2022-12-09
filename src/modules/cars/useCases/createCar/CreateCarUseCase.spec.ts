@@ -57,7 +57,7 @@ describe("Create Car", () => {
       category_id: "category",
     });
 
-    await expect(response).rejects.toBeInstanceOf(AppError);
+    await expect(response).rejects.toEqual(new AppError("Car already exists."));
   });
 
   it("should be able to create a new car with available true by default", async () => {

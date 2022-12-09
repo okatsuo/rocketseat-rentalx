@@ -24,7 +24,9 @@ describe("Authenticate User", () => {
       password: "valid-password",
     });
 
-    await expect(response).rejects.toBeInstanceOf(AppError);
+    await expect(response).rejects.toEqual(
+      new AppError("Email or password incorrect")
+    );
   });
 
   it("should not be able to authenticate with incorrect password", async () => {
@@ -41,7 +43,9 @@ describe("Authenticate User", () => {
       password: "incorrect-password",
     });
 
-    await expect(response).rejects.toBeInstanceOf(AppError);
+    await expect(response).rejects.toEqual(
+      new AppError("Email or password incorrect")
+    );
   });
 
   it("should be able to authenticate an user", async () => {
