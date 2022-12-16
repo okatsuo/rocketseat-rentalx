@@ -2,8 +2,8 @@ import { container } from "tsyringe";
 
 import "@shared/container/providers";
 
-import { IUsersRepository } from "@modules/accounts/infra/typeorm/repositories/IUsersRepository";
-import { UsersRepository } from "@modules/accounts/repositories/implementations/UsersRepository";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRepository";
 import { ICarsRepository } from "@modules/cars/infra/typeorm/repositories/ICarsRepository";
 import { ICategoriesRepository } from "@modules/cars/infra/typeorm/repositories/ICategoriesRepository";
