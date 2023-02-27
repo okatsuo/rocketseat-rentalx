@@ -20,20 +20,14 @@ export const ensureAuthenticated = async (
   if (!authorization) throw new AppError("Missing token", 401);
   const { 1: token } = authorization.split(" ");
 
-  console.log({ token });
-
   try {
     const { sub: user_id } = verify(token, auth.secretRefreshToken) as IPayload;
-
-    console.log({ user_id });
 
     const usersTokensRepository = new UsersTokensRepository();
     const user = await usersTokensRepository.findByUserIdAndRefreshToken(
       user_id,
       token
     );
-
-    console.log({ user });
 
     if (!user) throw new AppError("User does not exists", 401);
 
